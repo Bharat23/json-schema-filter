@@ -1,0 +1,10 @@
+version: 3
+
+tasks:
+  isort:
+    cmd: isort json_schema_filter/
+  flake8:
+    cmd: flake8 json_schema_filter/
+  black:
+    cmd: black json_schema_filter/
+  

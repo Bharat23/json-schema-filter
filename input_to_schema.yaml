@@ -1,0 +1,33 @@
+properties:
+  name:
+    type: string
+    required: true
+  age:
+    type: integer
+    minimum: 1
+    equals: 10
+    required: true
+  address:
+    type: object
+    properties:
+      street:
+        type: string
+        required: true
+      apt:
+        type: string
+      zip:
+        type: string
+        required: true
+  tags:
+    type: array
+    required: true
+    minItems: 1
+    contains:
+      type: object
+      properties:
+        key:
+          type: string
+          equals: StackId
+        value:
+          type: string
+          equals: test-stack

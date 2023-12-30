@@ -1,6 +1,7 @@
 # json-schema-filter
-A library that uses `jsonschema` to filter the objects
+[![PyPI version](https://badge.fury.io/py/json-schema-filter.svg)](https://badge.fury.io/py/json-schema-filter)
 
+A library that uses `jsonschema` to filter the objects
 
 ### Usage
 ```python

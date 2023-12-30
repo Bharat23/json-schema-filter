@@ -2,11 +2,16 @@ properties:
   name:
     type: string
     required: true
+  place:
+    type: string
+    required: true
+    notPresent: true
   age:
     type: integer
     minimum: 1
     equals: 10
     required: true
+    notPresent: true
   address:
     type: object
     properties:

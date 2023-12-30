@@ -1,7 +1,9 @@
 from jsonschema.exceptions import ValidationError
-from .registry import Registry
 
-@Registry.register
+from .registry import FilterValidatorRegistry
+
+
+@FilterValidatorRegistry.register
 def equals(validator, value, instance, schema):
     """
     Check if the passed value equals to the expected value

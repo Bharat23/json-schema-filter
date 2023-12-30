@@ -1,17 +1,24 @@
-from typing import Dict
+from typing import Dict, List, Union
 
 from jsonschema import validators
 from jsonschema.validators import Draft202012Validator
 
-from .validators import Registry
-from .logging import logger
+from .filter_validator import FilterValidatorRegistry
+from .struct import FilterResult, Rejected, Selected
+
 
 class Filterer:
-    def filter_now(self, input_data):
+    def filter(self, input_data: Union[List, Dict]) -> FilterResult:
         """
+        Filter the input based on the schema provided
+
+        :param input_data: Dict or List of Dict to process
+
+        :returns: FilterResult class obj
         """
         if not isinstance(input_data, list):
             input_data = [input_data]
+        filter_result_obj = FilterResult(selected=[], rejected=[])
         for idx, data in enumerate(input_data):
             errors = self.iter_errors(data)
             is_match = True
@@ -21,17 +28,32 @@ class Filterer:
                 messages.append(f"{inner_idx+1}. {path}: {err.message}")
                 is_match = False
             if not is_match:
-                output = f"Filtered item: [{idx}]\n" + "\t" + "\n\t".join(messages)
-                logger.warning(output)
+                filter_result_obj.rejected.append(
+                    Rejected(idx=idx, item=data, reasons=messages)
+                )
+            else:
+                filter_result_obj.selected.append(Selected(idx=idx, item=data))
+        return filter_result_obj
+
 
 class JsonSchemaFilter:
+    """
+    JSON Schema Entry Class
 
-    def __new__(cls, schema: Dict, schema_version = Draft202012Validator) -> "JsonSchemaFilter":
-        all_validators = dict(schema_version.VALIDATORS) 
-        all_validators.update(Registry.registered_validators)
-        MyValidator = validators.create(meta_schema=schema_version.META_SCHEMA, validators=all_validators)
-        MyFilter = type('Filter', (MyValidator, Filterer), {"abc": "lambda"})
+    :param schema: input schema for the filter
+    :param schema_version: Draft version to use for validations.
+                           Default: Draft202012Validator
+
+    :returns: CustomValidator class with filter
+    """
+
+    def __new__(
+        cls, schema: Dict, schema_version=Draft202012Validator
+    ) -> "JsonSchemaFilter":
+        all_validators = dict(schema_version.VALIDATORS)
+        all_validators.update(FilterValidatorRegistry.registered_validators)
+        MyValidator = validators.create(
+            meta_schema=schema_version.META_SCHEMA, validators=all_validators
+        )
+        MyFilter = type("Filter", (MyValidator, Filterer), {})
         return MyFilter(schema=schema)
-
-    def __init__(self, schema: Dict, schema_version = Draft202012Validator) -> None:
-        self.validator = schema_version

@@ -2,9 +2,17 @@ version: 3
 
 tasks:
   isort:
-    cmd: isort json_schema_filter/
+    cmds:
+      - which python3
+      - isort json_schema_filter/ test/
   flake8:
-    cmd: flake8 json_schema_filter/
+    cmd: flake8 json_schema_filter/ test/
   black:
-    cmd: black json_schema_filter/
+    cmds:
+      - which python3 
+      - black json_schema_filter/
+  build:
+    cmd: poetry build
+  publish:
+    cmd: poetry publish
   

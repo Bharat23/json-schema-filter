@@ -39,4 +39,4 @@ Filtered Item: [2]
 |Property|Supported type|
 |--------|--------------|
 |equals|*|
-
+|iequals|string|

@@ -23,7 +23,7 @@ class Rejected:
     reasons: List[str]
 
     def __repr__(self) -> str:
-        return f"Filtered Item: [{self.idx}]\n\t" + "\n".join(self.reasons)
+        return f"Filtered Item: [{self.idx}]\n\t" + "\n\t".join(self.reasons)
 
 
 @dataclass(kw_only=True)

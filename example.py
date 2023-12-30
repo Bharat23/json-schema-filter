@@ -35,8 +35,7 @@ from json_schema_filter import JsonSchemaFilter
 schema = {
     "properties": {
         "name": {
-            "type": "string",
-            "equals": "Shakespeare"
+            "iequals": "shakespeare"
         }
     },
     "required": ["name"]
@@ -44,7 +43,7 @@ schema = {
 
 input_data = [
     {"name": "what is in the name"},
-    {"name": "Shakespeare"},
+    {"name": "shakespeare"},
     {"name": "hamlet"},
 ]
 

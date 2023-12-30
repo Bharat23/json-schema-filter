@@ -33,7 +33,7 @@ jobs:
         poetry install --no-root
     - name: Build package
       run: poetry build
-    - name: Publish package
-      run: |
-        poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
-        poetry publish
+    # - name: Publish package
+    #   run: |
+    #     poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+    #     poetry publish

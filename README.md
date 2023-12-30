@@ -1,5 +1,6 @@
 # json-schema-filter
 [![PyPI version](https://badge.fury.io/py/json-schema-filter.svg)](https://badge.fury.io/py/json-schema-filter)
+![Publish](https://github.com/bharat23/json-schema-filter/actions/workflows/python-publish.yml/badge.svg)
 
 A library that uses `jsonschema` to filter the objects
 

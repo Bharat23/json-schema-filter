@@ -29,6 +29,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install build poetry
         poetry install --no-root
+    - name: Run test cases
+      run: |
+        pytest test/ --cov=json_schema_filter/ 
     - name: Build package
       run: poetry build
     # - name: Publish package

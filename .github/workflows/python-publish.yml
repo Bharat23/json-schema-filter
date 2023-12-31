@@ -31,7 +31,7 @@ jobs:
         poetry install --no-root
     - name: Run test cases
       run: |
-        pytest test/ --cov=json_schema_filter/ 
+        python -m pytest test/ --cov=json_schema_filter/ 
     - name: Build package
       run: poetry build
     # - name: Publish package

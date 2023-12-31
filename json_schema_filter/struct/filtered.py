@@ -35,6 +35,14 @@ class FilterResult:
     selected: List[Selected]
     rejected: List[Rejected]
 
+    @property
+    def total_selected(self) -> int:
+        return len(self.selected)
+
+    @property
+    def total_rejected(self) -> int:
+        return len(self.rejected)
+
     def __repr__(self) -> str:
         return f"Total Selected: {len(self.selected)}\n" + "\n".join(
             [str(rejects) for rejects in self.rejected]

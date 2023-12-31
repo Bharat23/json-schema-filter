@@ -15,4 +15,6 @@ tasks:
     cmd: poetry build
   publish:
     cmd: poetry publish
+  test:
+    cmd: pytest test/ --cov=json_schema_filter/
   

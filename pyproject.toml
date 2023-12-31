@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "json-schema-filter"
-version = "0.1.0"
+version = "0.2.0"
 description = "A library that uses json schema to filter the objects"
 authors = ["Bharat Sinha <bharat.sinha.2307@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/Bharat23/json-schema-filter"
 
 [tool.poetry.dependencies]
 python = "^3.10"

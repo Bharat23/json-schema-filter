@@ -12,6 +12,8 @@ class TestJsonSchemaFilter:
         ({"properties": {"greeting": {"type": "string", "equals": "hello"}}}, [{"greeting": "hello"}, {"greeting": "hi"}], 1, 1),
         # iequals match
         ({"properties": {"greeting": {"type": "string", "iequals": "hello"}}}, [{"greeting": "HELLO"}, {"greeting": "Hello"}], 2, 0),
+        # iequals on non-string
+        ({"properties": {"greeting": {"type": "number", "iequals": "hello"}}}, [{"greeting": 1}], 0, 1),
     ])
     def test_filter(self, input_schema: Dict, input_data: Dict, total_selected: int, total_rejected: int):
         filtered_result = JsonSchemaFilter(schema=input_schema).filter(input_data=input_data)

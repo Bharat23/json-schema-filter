@@ -37,7 +37,8 @@ Filtered Item: [2]
 ```
 
 ### Supported additional properties
-|Property|Supported type|
-|--------|--------------|
-|equals|*|
-|iequals|string|
+|Property|Supported type|Description|
+|--------|--------------|-----------|
+|equals|*|Check if value matches
+|iequals|string|Check if value matches (case insensitive)
+|nequals|*|Check if value does not match

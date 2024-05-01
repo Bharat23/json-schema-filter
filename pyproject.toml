@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "json-schema-filter"
-version = "0.2.0"
+version = "0.3.0"
 description = "A library that uses json schema to filter the objects"
 authors = ["Bharat Sinha <bharat.sinha.2307@gmail.com>"]
 license = "MIT"

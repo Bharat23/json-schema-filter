@@ -11,4 +11,6 @@ def nequals(validator, value, instance, schema):
     if not isinstance(value, type(instance)):
         yield ValidationError("Type mismatch")
     if value == instance:
-        yield ValidationError(f"Values are equal. Input value should not match {instance}")
+        yield ValidationError(
+            f"Values are equal. Input value should not match {instance}"
+        )
